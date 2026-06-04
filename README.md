@@ -1,5 +1,7 @@
 # Finance Data & AI Portfolio — TJ Jaiyen
 
+[![dbt CI](https://github.com/tjaiyensterling-debug/tj-finance-portfolio/actions/workflows/dbt-ci.yml/badge.svg)](https://github.com/tjaiyensterling-debug/tj-finance-portfolio/actions/workflows/dbt-ci.yml)
+
 Two small, runnable projects that show how I work: a cost accountant who builds the data and AI layer
 behind finance reporting, with correctness and governance built in — not bolted on.
 
