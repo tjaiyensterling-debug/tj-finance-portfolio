@@ -1,0 +1,6 @@
+# Airflow orchestration layer for the dbt_finance_variance project.
+# Airflow runs Linux/macOS-first; on Windows use WSL2 or the Astro CLI.
+apache-airflow==2.10.5
+astronomer-cosmos>=1.8,<2
+dbt-duckdb>=1.8
+duckdb>=1.0

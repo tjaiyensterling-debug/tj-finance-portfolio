@@ -30,3 +30,34 @@ jobs:
         env:
           DBT_PROFILES_DIR: .
         run: dbt build
+
+  airflow-dag-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Airflow + Cosmos
+        run: |
+          pip install "apache-airflow==2.10.5" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.5/constraints-3.12.txt"
+          pip install "astronomer-cosmos>=1.8,<2" dbt-duckdb duckdb
+
+      - name: DAG import test (DagBag)
+        env:
+          AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+        run: |
+          python - <<'EOF'
+          from airflow.models import DagBag
+          db = DagBag("airflow_orchestration/dags", include_examples=False)
+          assert not db.import_errors, f"DAG import errors: {db.import_errors}"
+          assert "finance_variance_pipeline" in db.dags, "finance_variance_pipeline not found"
+          dag = db.dags["finance_variance_pipeline"]
+          print(f"OK: {dag.dag_id} with {len(dag.tasks)} tasks:")
+          for t in dag.tasks:
+              print("  -", t.task_id)
+          EOF
