@@ -1,7 +1,8 @@
 # Resume Bullet Points
 
-Grounded in the three runnable portfolio projects. Pick 2–4 depending on space. Each leads with the
-engineering, with the cost-accounting origin as the differentiator — not the other way around.
+Grounded in runnable portfolio projects (the dbt/agent work here, plus the separate quant-research-engine).
+Pick 2–4 depending on space. Each leads with the engineering, with the cost-accounting origin as the
+differentiator — not the other way around.
 
 ## Portfolio / Projects section
 
@@ -20,6 +21,13 @@ engineering, with the cost-accounting origin as the differentiator — not the o
   and flagging an unprofitable tenant — governed by data, unit, and singular tests. Demonstrates FinOps-for-AI
   thinking: the materiality threshold becomes a margin-zone threshold; subledger-to-GL reconciliation becomes
   a dbt relationship test.
+
+- **Built a regime-aware equity research engine (Python) with an institutional-grade validation harness** —
+  an HMM market-state classifier feeding five quantitative signals behind an 8-guard veto layer and a
+  paper-only auto-trader, validated with walk-forward analysis, Deflated Sharpe Ratio, Combinatorial Purged
+  Cross-Validation, and 180+ tests that force every signal through multiple-testing correction before it's
+  trusted — and report honestly when no edge survives. The separate-a-real-signal-from-a-lucky-backtest
+  discipline behind sound financial analysis. (separate repo: github.com/tjaiyen/quant-research-engine)
 
 - **Kept every artifact clone-and-build** (DuckDB, no warehouse to provision; `dbt build` in under a minute)
   so reviewers can verify the work rather than take a screenshot on faith.
